@@ -1,0 +1,11 @@
+﻿.navbar {
+    background-color: #220B03;
+}
+
+.nav-text {
+    color: #F4F4F9 !important;
+}
+
+    .nav-text:hover {
+        color: #1F2D3B !important;
+    }

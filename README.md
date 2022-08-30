@@ -1,0 +1,2 @@
+## D&D Mapper
+This repository is a coppied repository of the D&D Mapper project. The origional project is made in a GitLab repository due to educational restrictions, and later coppied to GitHub for the additional features it offers.

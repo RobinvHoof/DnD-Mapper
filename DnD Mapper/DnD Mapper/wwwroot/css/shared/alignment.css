@@ -1,0 +1,11 @@
+﻿.vertical-center {
+    min-height: 80%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.horizotal-center {
+    width: 50%;
+    margin: 0 auto;
+}

@@ -1,0 +1,48 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/css/pages/login.css")" rel="stylesheet" type="text/css" />
+}
+
+
+<div class="vertical-center justify-content-center">
+    <form id="account" method="post" class="align-items-center">
+        <p class="header-text">
+            Sign in
+        </p>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row max-static-width">
+            <div class="col-12 form-group">
+                <input type="text" asp-for="Input.Username" class="input-sm form-control text-field-default" placeholder="Username" autocomplete="off" />
+                <span asp-validation-for="Input.Username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row  max-static-width">
+            <div class="col form-group">
+                <input type="password" asp-for="Input.Password" class="input-sm form-control text-field-default" placeholder="Password" autocomplete="off" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row  max-static-width">
+            <div class="col form-group">
+                <button type="submit" class="btn button-default" style="width:100%">Log in</button>
+            </div>
+            <div class="col form-group">
+                <p>
+                    <a class="register-link" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

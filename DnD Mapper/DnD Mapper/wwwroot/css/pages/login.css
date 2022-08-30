@@ -1,0 +1,12 @@
+﻿.header-text {
+    font-size: 32px;
+    color: #F4F4F9;
+}
+
+.register-link {
+    color: #F4F4F9;
+}
+
+    .register-link:hover {
+        color: #1F2D3B !important;
+    }
