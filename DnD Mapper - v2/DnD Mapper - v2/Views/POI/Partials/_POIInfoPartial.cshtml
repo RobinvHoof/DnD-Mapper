@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+@model DnD_Mapper___v2.Models.POIModel
+
+<div class="">
+    <h1>@Model.Name</h1>
+    @{ if (Model.RegionName != null && Model.RegionName.Length != 0)
+        {
+            <p>Region: @Model.RegionName</p>
+        }
+    }
+
+    <hr />
+    @{ 
+        string[] parts = Model.Description.Split("\r\n");
+        foreach(string part in parts)
+            {                
+                @part
+                <br />
+            }
+    }
+</div>

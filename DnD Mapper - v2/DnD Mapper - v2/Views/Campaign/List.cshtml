@@ -1,0 +1,47 @@
+﻿@inject BLL.CampaignManager campaignManager
+@inject BLL.UserManager userManager
+
+@{
+    ViewData["Title"] = "Your Campaigns";    
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/pages/campaign.css">
+}
+
+<div class="horizontal-offset">
+    <br />
+    <div class="row">
+        <div class="col"><h2>Campaign List</h2></div>
+        <div class="col"><input class="btn button-default new-button" type="button" value="+ New Campaign" onclick="location.href='@Url.Action("Create", "Campaign")'"/></div>
+    </div>
+    
+    <div>
+        <hr />
+        <h5>DM Campaigns</h5>
+        @foreach (BLL.Models.Campaign campaign in userManager.GetUser(Convert.ToInt32(Context.Request.Cookies["user_id"])).GetDMCampaigns())
+        {
+            <div class="row">
+                <div class="col width50 hide-overflow">@campaign.Name</div>
+                <div class="col">
+                    <input class="btn button-default hide-overflow height95" type="button" value="Open DM View" onclick="location.href='@Url.Action("Index", "Campaign", new { campaignID = campaign.ID, DMMode = true })'" />
+                    <input class="btn button-default grey-button hide-overflow height95" type="button" value="Open Player View" onclick="location.href='@Url.Action("Index", "Campaign", new { campaignID = campaign.ID })'" />
+                    <input class="btn button-default red-button hide-overflow height95" type="button" value="Delete" onclick="location.href='@Url.Action("Delete", "Campaign", new { campaignID = campaign.ID })'" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <div>
+        <hr />
+        <h5>Player Campaigns</h5>
+        @foreach (BLL.Models.Campaign campaign in userManager.GetUser(Convert.ToInt32(Context.Request.Cookies["user_id"])).GetCampaigns())
+        {
+            <div class="row">
+                <div class="col">@campaign.Name</div>
+                <div class="col"><input class="btn button-default new-button" type="button" value="Open" onclick="location.href='@Url.Action("Index", "Campaign", new { campaignID = campaign.ID })'" /></div>
+            </div>
+        }
+    </div>
+</div>
+

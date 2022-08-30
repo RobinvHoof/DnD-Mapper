@@ -1,0 +1,52 @@
+﻿@model DnD_Mapper___v2.Models.POICampaignModel
+
+@{
+    Layout = "../Campaign/_CampaignLayout";
+    ViewData["Title"] = "- New PoI";
+}
+
+@section NavbarItems {
+    <li class="nav-item">
+        <span class="nav-link" style="color:#F4F4F9 !important">></span>
+    </li>
+    <li class="nav-item">
+        <div class="">@Html.ActionLink("Create POI", "Create", "POI", new { campaignID = Model.ID }, new { @class = "nav-link nav-text" })</div>
+    </li>
+}
+
+<div class="parent">
+    <div class="div1">
+        <div class="align-middle">
+            <div class="text-center">
+                <h1 class="header-text">New Point of Interest</h1>
+            </div>
+            <hr class="width-var" />
+
+            <span class="row field-row">@ViewBag.CreateResult</span>
+            <form asp-action="Create">
+                <div hidden>
+                    <input type="number" asp-for="ID" value="@Model.ID" />
+                    <input type="text" asp-for="Name" value="@Model.Name" />
+                </div>
+                <div class="row field-row">
+                    @Html.LabelFor(model => model.POIName, htmlAttributes: new { @class = "" }) <hr />
+                    <span asp-validation-for="POIName" class=""></span>
+                    <input asp-for="POIName" placeholder="Name" autocomplete="off" class="form-control default-textfield">
+                </div>
+                <div class="row field-row">
+                    @Html.LabelFor(model => model.RegionName, htmlAttributes: new { @class = "" }) <hr />
+                    <span asp-validation-for="RegionName" class=""></span>
+                    <input asp-for="RegionName" placeholder="Region Name" autocomplete="off" class="form-control default-textfield">
+                </div><br />
+                      <div class="row field-row">
+                          @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "" }) <hr />
+                          <span asp-validation-for="Description" class=""></span>
+                          <textarea asp-for="Description" placeholder="" autocomplete="off" class="form-control default-textfield" style="height:20vh"></textarea>
+                      </div>
+                <div class="row field-row top-space justify-content-center">
+                    <input type="submit" class="btn button-default width50 top8" value="Create Point of Interest">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+﻿/* Footer Styling*/
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+
+/* Font Sizing */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+/* Default Page Elements */
+
+    /* Automatic Definition*/
+body {
+    background-color: #F4F4F9;
+    background-image: url("/media/shared/default_background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color: #F4F4F9;
+}
+
+a:link {
+    color: #2D7DD2
+}
+
+    a:link:hover {
+        color: #1F2D3B;
+        text-decoration: none;
+    }
+
+
+p { /* Default Text */
+    color: #F4F4F9;
+}
+
+hr {
+    color: #F4F4F9;
+}
+
+
+ /* Manual Definitions */
+.default-textfield {
+    background-color: #1F2D3B !important;
+    border-color: #1F2D3B;
+    color: #F4F4F9 !important;
+}
+
+    .default-textfield:hover {
+        border-color: #2D7DD2 !important;
+    }
+
+.button-default {
+    background-color: #2D7DD2;
+    color: #F4F4F9;
+}
+
+.link-default {
+    color: #F4F4F9;
+}
+
+    .link-default:hover {
+        color: #1F2D3B;
+        text-decoration: none;
+    }
+
+.hide-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+    
+
+
+/* Custom Global Definitions */
+.max-static-width { /* Maximum static width for non-flexible elements */
+    width: 400px !important;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #a4361b #220b03;
+}
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: #220b03;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #a4361b;
+        border-radius: 10px;
+    }
+

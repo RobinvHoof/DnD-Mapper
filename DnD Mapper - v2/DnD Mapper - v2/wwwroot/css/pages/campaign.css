@@ -1,0 +1,82 @@
+﻿:root {
+    --max-login-field-width: 25%;
+    --min-login-field-width: 400px;
+    --login-field-width: max(var(--max-login-field-width), var(--min-login-field-width));
+}
+
+#footer {
+    display: none;
+}
+
+.new-button {
+    margin-top: 5px;
+}
+
+.height95 {
+    height: 95%;
+}
+
+.grey-button {    
+    background-color: #1F2D3B !important
+}
+
+.red-button {
+    background-color: #A4361B !important
+}
+
+
+.header-text {
+    font-size: 46px;
+    color: #F4F4F9;
+}
+
+.field-row {
+    margin-top: 2px;
+    width: var(--login-field-width);
+    margin-left: calc(calc(100% - var(--login-field-width)) / 2);
+}
+
+.width-var {
+    width: var(--login-field-width);
+}
+
+.form-box {
+    width: 50%;
+    margin-left: 25%;
+}
+
+
+/* Grid */
+.parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr 3fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: calc(100vh - 120px);
+    width: 100vw;
+}
+
+.div1 {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.index-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 0.2fr;
+    grid-template-rows: 0.75fr 0.25fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.map-grid-container {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.info-grid-container {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.poi-list-grid-container {
+    grid-area: 1 / 2 / 3 / 3;
+}

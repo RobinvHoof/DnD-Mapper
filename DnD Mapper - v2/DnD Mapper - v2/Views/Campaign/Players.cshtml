@@ -1,0 +1,66 @@
+﻿@model DnD_Mapper___v2.Models.CampaignModel
+
+@inject BLL.CampaignManager campaignManager
+@inject BLL.UserManager userManager
+
+@{
+    Layout = "./_CampaignLayout";
+    ViewData["Title"] = "- Players";
+}
+
+@section NavbarItems {
+    <li class="nav-item">
+        <span class="nav-link" style="color:#F4F4F9 !important">></span>
+    </li>
+    <li class="nav-item">        
+        <div class="">@Html.ActionLink("Players", "Players", "Campaign", new { campaignID = Model.ID, DMMode = ViewBag.DMMode }, new { @class = "nav-link nav-text" })</div>
+    </li>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/pages/campaign.css">
+}
+
+<div class="horizontal-offset">
+    <br />
+    <div class="row">
+        <div class="col"><h2 class="hide-overflow">@Model.Name - Players</h2></div>
+        @{
+            if (ViewBag.DMMode != null)
+            {
+                @ViewBag.Message
+                <form asp-controller="Campaign" asp-action="AddPlayer">
+                    <div class="row" >
+                        <div class="col" style="padding: 0px;">
+                            <input style="" class="float-right btn button-default new-button" type="submit" value="+ AddPlayer" />
+                        </div>
+                        <div class="col" style="margin-left: 5px; padding:0px; width: 500px;">
+                            <input style="position: absolute; bottom: 0;" class="float-left form-control default-textfield" type="text" placeholder="Username" name="username" />
+                            <input type="number" value="@Model.ID" name="campaignID" hidden />
+                        </div>
+                    </div>
+                </form>
+            }
+        }
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col width50 hide-overflow"><h5>[DM] @Model.DM.Username</h5></div>   
+        </div>
+        <hr />
+        @foreach (BLL.Models.User user in campaignManager.GetCampaign(Model.ID).Players)
+        {
+            <div class="row">
+                <div class="col width50 hide-overflow">@user.Username</div>
+                <div class="col">
+                    @{
+                        if (ViewBag.DMMode != null)
+                        {
+                            <input class="btn button-default delete-button hide-overflow" type="button" value="Kick" onclick="location.href='@Url.Action("Kick", "Campaign", new { campaignID = Model.ID, playerID = user.ID })'" />
+                        }}
+                </div>
+            </div>
+        }
+    </div>
+</div>

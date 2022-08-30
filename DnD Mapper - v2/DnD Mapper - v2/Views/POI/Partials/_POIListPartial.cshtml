@@ -1,0 +1,26 @@
+﻿@model DnD_Mapper___v2.Models.CampaignModel
+
+<div>
+    <h1> Points of Interest </h1>
+    @{ if (ViewBag.DMMode != null)
+        {
+            <button class="btn button-default" onclick="location.href='@Url.Action("Create", "POI", new { campaignID = Model.ID })'">+ Add</button>
+        }
+    }
+    <hr />
+    @{
+        foreach (BLL.Models.POI POI in Model.POIs)
+        {
+
+            <div>
+                @{ if (ViewBag.DMMode != null)
+                    {
+                        <button class="btn button-default" onclick="location.href='@Url.Action("Edit", "POI", new { campaignID = Model.ID, POIID = POI.ID })'">Edit</button>
+                        <button class="btn button-default red-button" onclick="location.href='@Url.Action("Delete", "POI", new { campaignID = Model.ID, POIID = POI.ID })'">Delete</button>
+                    }
+                }
+                <a onclick="SetPOIInfo(@Model.ID, @POI.ID)" href="#" class="link-default hide-overflow">@POI.Name</a>
+            </div>
+        }
+    }
+</div>

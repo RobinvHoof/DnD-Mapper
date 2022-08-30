@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "./_CampaignLayout";
+    ViewData["Title"] = "";
+
+    string mapSrc = null;
+    if (Model.Map != null)
+    {
+        string base64 = Convert.ToBase64String(Model.Map);
+        mapSrc = String.Format("data:image;base64,{0}", base64);
+    }
+}
+
+<div class="index-grid">
+    <div class="map-grid-container" style="overflow-y: scroll; height: 74.9vh">
+        @{ if (mapSrc.Length > 18)
+            {
+                <img src="@mapSrc" style="width: 100%" />
+            } else
+            {
+                <h3>No map has been uploaded yet! The DM can upload one using the "Settings" tab</h3>
+            }
+        }
+
+    </div>
+    <div class="info-grid-container" id="POIInfoDynamicContent" style="overflow-y: scroll;">
+        <h3>Click a Point of Interest in the list on the right for extra information</h3>
+    </div>
+    <div class="poi-list-grid-container" style="overflow-y: scroll;">
+        <partial name="../POI/Partials/_POIListPartial" model="@Model"/>
+    </div>    
+    
+</div>
+
+@section Scripts {
+    <script>
+       function SetPOIInfo(_campaignId, _POIId) {
+            $.ajax({
+                url: '/POI/GetPOIInfo',
+                type: 'GET',
+                dataType: 'html',
+                data: { campaignId: _campaignId ,POIId: _POIId },
+                success: function (data) {
+                    $('#POIInfoDynamicContent').html(data);
+                }
+            });
+       }
+    </script>
+}
+
+

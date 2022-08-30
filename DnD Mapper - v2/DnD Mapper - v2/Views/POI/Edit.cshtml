@@ -1,0 +1,63 @@
+﻿@model DnD_Mapper___v2.Models.POICampaignModel
+
+@{
+    Layout = "../Campaign/_CampaignLayout";
+    ViewData["Title"] = Model.Name + " - " + Model.POIName + " - Details";
+}
+
+@section NavbarItems {
+    <li class="nav-item">
+        <span class="nav-link" style="color:#F4F4F9 !important">></span>
+    </li>
+    <li class="nav-item">
+        <div class="nav-link nav-text">@Model.POIName</div>
+    </li>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/pages/campaign.css">
+}
+
+<div class="parent">
+    <div class="div1">
+        <div class="align-middle">
+            <div class="text-center">
+                <h1 class="header-text">Campaign Details</h1>
+            </div>
+            <hr class="width-var" />
+
+            <span class="row field-row">@ViewBag.CreateResult</span>
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div hidden>
+                    <input asp-for="ID" value="@Model.ID" />
+                    <input asp-for="POIID" value="@Model.POIID" />
+                    <input asp-for="Name" value="@Model.Name" />
+                </div>
+                <div class="row field-row">
+                    @Html.LabelFor(model => model.POIName, htmlAttributes: new { @class = "" }) <hr />
+                    @Html.ValidationMessageFor(model => model.POIName, "", new { @class = "" })
+                    @Html.EditorFor(model => model.POIName, new { htmlAttributes = new { @class = "form-control default-textfield", @type = "text" } })
+                </div>
+                <div class="row field-row">
+                    @Html.LabelFor(model => model.RegionName, htmlAttributes: new { @class = "" }) <hr />
+                    @Html.ValidationMessageFor(model => model.RegionName, "", new { @class = "" })
+                    @Html.EditorFor(model => model.RegionName, new { htmlAttributes = new { @class = "form-control default-textfield", @type = "text" } })
+                </div>
+                <div class="row field-row">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "" }) <hr />
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "" })
+                    <textarea asp-for="Description" class="form-control default-textfield" style="height: 20vh">@Model.Description</textarea>
+                </div>
+
+                <div class="row field-row top-space justify-content-center">
+                    <div class="col">
+                        <input type="submit" class="btn button-default width100 top8" value="Confirm Changes">
+                    </div>
+                    <div class="col">
+                        <input class="btn button-default red-button width100 top8" type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "Campaign", new { campaignID = Model.ID, DMMode = true })'" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

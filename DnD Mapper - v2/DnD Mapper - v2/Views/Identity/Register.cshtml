@@ -1,0 +1,41 @@
+﻿@model DnD_Mapper___v2.Models.SignupUserModel;
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/pages/identity.css" />
+    <link rel="stylesheet" href="~/css/shared/common.css" />
+}
+
+<div class="parent">
+    <div class="div1">
+        <div class="align-middle">
+            <div class="text-center">
+                <h1 class="header-text">Register</h1>
+            </div>
+            <hr class="width-var" />
+            <span class="row field-row">@ViewBag.RegisterState</span>
+            <form asp-action="Register">
+                <div class="row field-row">
+                    <span asp-validation-for="Username" class=""></span><br />
+                    <input asp-for="Username" placeholder="Username" class="form-control default-textfield">
+                </div>
+                <br>
+                <div class="row field-row">
+                    <span asp-validation-for="Password" class=""></span><br />
+                    <input asp-for="Password" type="password" placeholder="Password" class="form-control default-textfield">
+                </div>
+                <div class="row field-row">
+                    <span asp-validation-for="ComparePassword" class=""></span><br />
+                    <input asp-for="ComparePassword" type="password" placeholder="Re-enter password" class="form-control default-textfield">
+                </div>
+                <div class="row field-row top-space">
+                    <div class="col"><input type="submit" class="btn btn-primary submit-button width100" value="Sign up"></div>
+                    <div class="col my-auto"><a href="@Url.Action("Login", "Identity")" class="link-default">Log in</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

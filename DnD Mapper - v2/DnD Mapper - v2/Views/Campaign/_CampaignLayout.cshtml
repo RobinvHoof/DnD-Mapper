@@ -1,0 +1,61 @@
+﻿@model DnD_Mapper___v2.Models.CampaignModel;
+
+<!DOCTYPE html>
+<html lang="en" style="height: 100vh">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Model.Name @ViewData["Title"]</title>
+    <link rel="icon" href="~/media/shared/dnd_icon.png" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/shared/common.css" />
+    <link rel="stylesheet" href="~/css/shared/navbar.css" />
+    <link rel="stylesheet" href="~/css/shared/alignment.css" />
+    <link rel="stylesheet" href="~/css/pages/campaign.css">
+    @RenderSection("Styles", false)
+</head>
+<body style="padding-left: unset; padding-right: unset;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Campaign" asp-action="List"><img src="~/media/campaign/back-arrow.png" width="30" height="30"></a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <div class="">@Html.ActionLink(Model.Name, "Index", "Campaign", new { campaignID = Model.ID, DMMode = ViewBag.DMMode }, new { @class = "nav-link nav-text" })</div>
+                        </li>
+                        @RenderSection("NavbarItems", false)
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <div class="">@Html.ActionLink("Players", "Players", "Campaign", new { campaignID = Model.ID, DMMode = ViewBag.DMMode }, new { @class = "nav-link nav-text" })</div>
+                        </li>
+                        @if (ViewBag.DMMode != null)
+                        {
+                            <li class="nav-item">
+                                <div class="">@Html.ActionLink("Settings", "CampaignDetails", "Campaign", new { campaignID = Model.ID }, new { @class = "nav-link nav-text" })</div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="">@Html.ActionLink("DM View Enabled", "Index", "Campaign", new { campaignID = Model.ID }, new { @class = "nav-link nav-text" })</div>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div>
+        <main role="main" class="" style="margin-bottom: 0px; height:85vh;">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
